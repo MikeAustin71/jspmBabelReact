@@ -63,8 +63,9 @@ The following local installation attempt led to the conflict:
 ```
 jspm install npm:babel-runtime
 ```
+
 __Result:
-"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update" __
+"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update"__
 
 ---
 ##### 2-b-2 Work-around - Run these npm global installations
