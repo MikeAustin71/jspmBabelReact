@@ -1,4 +1,7 @@
 # JSPM Babel React JSX Setup
+### Simple Component Hello World Demo
+---
+
 This is a working setup configuration for the latest versions of jspm, React,
 JSX and babel-6.
 
@@ -13,6 +16,9 @@ of React.
 
 **Feel free to make improvements...**
 
+---
+
+
 ## Setup Package Versions
 
 ```
@@ -21,6 +27,15 @@ React version 0.14.2
 Babel CLI version 6.1.18
 Babel Core version 6.1.19
 ```
+
+## Browsers
+Works in all the following browsers. In IE, the 'bundled' versions seems to
+work best.
+* Chrome
+* FireFox
+* Edge
+* IE
+
 
 ### 1. Setup initial package.json
 ```
