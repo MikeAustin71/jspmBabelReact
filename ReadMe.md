@@ -44,7 +44,12 @@ npm install --global babel-cli
 ---
 
 ###### 2-b-1 Reference JSPM Warning
-"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update"
+The following local installation attempt led to the conflict:
+```
+jspm install npm:babel-runtime
+```
+__Result:
+"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update" __
 
 ---
 ##### 2-b-2 Work-around - Run these npm global installations
@@ -147,7 +152,7 @@ we cannot run jspm install npm:babel-runtime with JSPM Version 0.16.14
 ##### 9-a Manual Transpile to 'build' Directory
 
 ```
-babel src --out-dir build
+babel src --out-dir build --source-maps true
 ```
 __ babel will take options from '.babelrc' file__
 
@@ -174,8 +179,17 @@ Run: __jspm-server__<ENTER>
 
 ##### 10-c OR - Any of a half-dozen other servers
 
+### 11. Create Self-Executing Bundle
+* a. Create the sfx bundle and output to 'prod' directory
+```
+jspm bundle-sfx build/main.js prod/app.js  --minify
 
-### 11. To Clone This Repo And Run The Demo App
+```
+
+* b. See index2.html for execution example
+
+
+### 12. To Clone This Repo And Run The Demo App
   * a. Clone the repo to local directory
   * b. cd local Directory
   * c. Run the global npm and jspm installs (Items 1 through 3, above)
@@ -199,5 +213,13 @@ Run: __jspm-server__<ENTER>
 ### React Docs
 [React Docs](https://facebook.github.io/react/docs/getting-started.html)
 
+### JSPM Info
+[jspm Info](http://jspm.io/)
+
+
 ### JSPM Docs
-[jspm docs](http://jspm.io/)
+[jspm docs](https://github.com/jspm/jspm-cli)
+
+
+### JSPM Bundling
+[jspm bundles](https://github.com/jspm/jspm-cli/blob/master/docs/production-workflows.md)
