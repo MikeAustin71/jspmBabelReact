@@ -170,7 +170,7 @@ we cannot run jspm install npm:babel-runtime with JSPM Version 0.16.14
 ```
 babel src --out-dir build --source-maps true
 ```
-__ babel will take options from '.babelrc' file__
+__babel will take options from '.babelrc' file__
 
 
 ##### 9-b OR!! Set Watch On JSX Directory
