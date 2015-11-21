@@ -14,7 +14,6 @@ bower_components/
 jspm_packages/
 lib/
 cmdrx/
-build
 #.tmp
 
 # Ignore Test reporters
