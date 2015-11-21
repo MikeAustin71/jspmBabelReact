@@ -9,10 +9,11 @@ obj
 
 # Ignore Node & Bower
 ###################
-node_modules
-bower_components
-jspm_packages
-lib
+node_modules/
+bower_components/
+jspm_packages/
+lib/
+cmdrx/
 build
 #.tmp
 
