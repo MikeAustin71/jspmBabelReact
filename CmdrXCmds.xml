@@ -9,13 +9,29 @@
 		<DefaultCommandOutputLogFilePathName>./cmdrx/install.log</DefaultCommandOutputLogFilePathName>
 	</CommandFileHeader>
 	<ExectuteCommand>
+		<CommandDisplayName>Extend jspm npm timeout</CommandDisplayName>
+		<ConsoleCommandType>Console</ConsoleCommandType>
+		<KillJobsRunOnExitCodeGreaterThan></KillJobsRunOnExitCodeGreaterThan>
+		<KillJobsRunOnExitCodeLessThan></KillJobsRunOnExitCodeLessThan>
+		<CommandOutputLogFilePathBaseName></CommandOutputLogFilePathBaseName>
+		<!--Time out expressed in decimal fractions of a minute. Example: 10.0 minutes -->
+		<CommandTimeOutInMinutes>5.0</CommandTimeOutInMinutes>
+		<DefaultConsoleCommandExecutor>cmd.exe</DefaultConsoleCommandExecutor>
+		<ConsoleCommandExeArguments>/c</ConsoleCommandExeArguments>
+		<ExecuteInDir></ExecuteInDir>
+		<ExecutableTarget>jspm</ExecutableTarget>
+		<CommandToExecute>config</CommandToExecute>
+		<CommandModifier>registries.npm.timeouts.lookup</CommandModifier>
+		<CommandArguments>120</CommandArguments>
+	</ExectuteCommand>
+	<ExectuteCommand>
 		<CommandDisplayName>Install babel-cli</CommandDisplayName>
 		<ConsoleCommandType>Console</ConsoleCommandType>
 		<KillJobsRunOnExitCodeGreaterThan></KillJobsRunOnExitCodeGreaterThan>
 		<KillJobsRunOnExitCodeLessThan></KillJobsRunOnExitCodeLessThan>
 		<CommandOutputLogFilePathBaseName></CommandOutputLogFilePathBaseName>
 		<!--Time out expressed in decimal fractions of a minute. Example: 10.0 minutes -->
-		<CommandTimeOutInMinutes>15.0</CommandTimeOutInMinutes>
+		<CommandTimeOutInMinutes>5.0</CommandTimeOutInMinutes>
 		<DefaultConsoleCommandExecutor>cmd.exe</DefaultConsoleCommandExecutor>
 		<ConsoleCommandExeArguments>/c</ConsoleCommandExeArguments>
 		<ExecuteInDir></ExecuteInDir>
@@ -121,6 +137,22 @@
 		<CommandArguments>npm:babel-plugin-transform-es2015-modules-amd</CommandArguments>
 	</ExectuteCommand>
 	<ExectuteCommand>
+		<CommandDisplayName>Install babel-plugin-transform-es2015-modules-systemjs</CommandDisplayName>
+		<ConsoleCommandType>Console</ConsoleCommandType>
+		<KillJobsRunOnExitCodeGreaterThan></KillJobsRunOnExitCodeGreaterThan>
+		<KillJobsRunOnExitCodeLessThan></KillJobsRunOnExitCodeLessThan>
+		<CommandOutputLogFilePathBaseName></CommandOutputLogFilePathBaseName>
+		<!--Time out expressed in decimal fractions of a minute. Example: 10.0 minutes -->
+		<CommandTimeOutInMinutes>15.0</CommandTimeOutInMinutes>
+		<DefaultConsoleCommandExecutor>cmd.exe</DefaultConsoleCommandExecutor>
+		<ConsoleCommandExeArguments>/c</ConsoleCommandExeArguments>
+		<ExecuteInDir></ExecuteInDir>
+		<ExecutableTarget>jspm</ExecutableTarget>
+		<CommandToExecute>install</CommandToExecute>
+		<CommandModifier></CommandModifier>
+		<CommandArguments>npm:babel-plugin-transform-es2015-modules-systemjs</CommandArguments>
+	</ExectuteCommand>
+	<ExectuteCommand>
 		<CommandDisplayName>Install babel transform-react-jsx</CommandDisplayName>
 		<ConsoleCommandType>Console</ConsoleCommandType>
 		<KillJobsRunOnExitCodeGreaterThan></KillJobsRunOnExitCodeGreaterThan>
@@ -151,6 +183,22 @@
 		<CommandToExecute>install</CommandToExecute>
 		<CommandModifier></CommandModifier>
 		<CommandArguments>npm:babel-preset-stage-0</CommandArguments>
+	</ExectuteCommand>
+	<ExectuteCommand>
+		<CommandDisplayName>Install github:systemjs/plugin-css</CommandDisplayName>
+		<ConsoleCommandType>Console</ConsoleCommandType>
+		<KillJobsRunOnExitCodeGreaterThan></KillJobsRunOnExitCodeGreaterThan>
+		<KillJobsRunOnExitCodeLessThan></KillJobsRunOnExitCodeLessThan>
+		<CommandOutputLogFilePathBaseName></CommandOutputLogFilePathBaseName>
+		<!--Time out expressed in decimal fractions of a minute. Example: 10.0 minutes -->
+		<CommandTimeOutInMinutes>15.0</CommandTimeOutInMinutes>
+		<DefaultConsoleCommandExecutor>cmd.exe</DefaultConsoleCommandExecutor>
+		<ConsoleCommandExeArguments>/c</ConsoleCommandExeArguments>
+		<ExecuteInDir></ExecuteInDir>
+		<ExecutableTarget>jspm</ExecutableTarget>
+		<CommandToExecute>install</CommandToExecute>
+		<CommandModifier></CommandModifier>
+		<CommandArguments>css=github:systemjs/plugin-css</CommandArguments>
 	</ExectuteCommand>
 	<ExectuteCommand>
 		<CommandDisplayName>Install React</CommandDisplayName>
