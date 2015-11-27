@@ -249,7 +249,7 @@ jspm bundle-sfx build/main.js prod/app.js  --minify
 #### 12-b Create a DepCache
 * No change required for index.html
 * [DepCache](https://github.com/systemjs/systemjs/blob/master/docs/production-workflows.md)
-* __Note: This demo uses 'depcache'__
+
 
 ```
 jspm  depcache build/main.js
