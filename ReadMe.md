@@ -1,9 +1,10 @@
-# JSPM Babel React JSX Setup
-### Simple Component Hello World Demo
+# JSPM SystemJs Babel React JSX Project Setup
+### Simple React Component Hello World Demo
 ---
 
-This is a working setup configuration for the latest versions of jspm, React,
-JSX and babel-6.
+This is a working setup configuration for the latest versions of jspm, systemjs react, JSX and babel-6.
+
+For the specific project setup steps, see Section 'Setup/Install Procedures' below.
 
 The setup includes a work-around for the jspm conflict related to the
 babel-runtime (see Item 2-b). Essentially, the conflict means that babel cannot
@@ -22,7 +23,7 @@ of React.
 ## Setup Package Versions
 
 ```
-jspm version 0.16.15
+jspm version 0.16.15  
 React version 0.14.3
 babel-cli version 6.2.0
 babel-core version 6.2.1
@@ -37,6 +38,31 @@ work best.
 * Edge
 * IE
 
+## Why the complexity?
+#### Due to a jspm version 0.16.15 conflict with babel-6, selected presets and plugins will need to be installed globally.
+
+* This will allow for granular control and configuration of babel transpiler options.
+
+* Word is that this conflict will be resolved with the release of jspm 0.17.0 due out in December, 2015.
+
+#### Reference JSPM Warning
+The following local installation attempt led to the conflict. jspm int with the
+babel transpiler option loads a babel-5 version. Run the following install command and the warning is
+generated. The only work around available so far involves installing the bable components
+globally as shown in 2-b below.
+
+```
+jspm install npm:babel-runtime
+```
+
+__Result:
+"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update"__
+
+[May be Related Issue](https://github.com/babel/babel-loader/issues/132)
+
+
+## Setup/Install Procedures
+For a quick setup using this pre-existing configuration go here -> [QuickSetup](./QuickSetup.md)
 
 ### 1. Setup initial package.json
 ```
@@ -51,37 +77,15 @@ work best.
 ```
 npm install --global babel-cli
 ```
-#### 2-b Due to a jspm version 0.16.15 conflict with babel-6, these presets and plugins will need to be installed globally.
 
-
-* This will allow for granular control and configuration of babel transpiler options.
-
-
----
-
-##### 2-b-1 Reference JSPM Warning
-The following local installation attempt led to the conflict. jspm-loader --babel
-tries to load a babel-5 version. Run the following install command and the warning is
-generated. The only work around available so far is to install the bable components
-globally as shown in 2-b-2 below.
-
-```
-jspm install npm:babel-runtime
-```
-
-__Result:
-"warn babel-runtime@6.1.18 is unsupported for this version of jspm. Use jspm dl-loader --latest to update"__
-
-[May be Related Issue](https://github.com/babel/babel-loader/issues/132)
-
----
-##### 2-b-2 Work-around - Run these npm global installations
+#### 2-b Work-around for Babel 6 JSPM conflict - Run these npm global installations
 * a. npm install -g babel-preset-react
 * b. npm install -g babel-preset-es2015
 * c. npm install -g babel-preset-stage-0
 * d. npm install -g babel-plugin-transform-react-jsx
 * e. npm install -g babel-plugin-transform-es2015-modules-commonjs
 * f. npm install -g babel-plugin-transform-es2015-modules-amd
+* g. npm install -g babel-plugin-transform-es2015-modules-systemjs
 
 ##### See the notes on .babelrc file setup (9-a below)
 ---
@@ -99,12 +103,6 @@ npm install -g jspm
 npm install jspm --save-dev
 ```
 
-__You may need to extend the timeout for npm registry__
-
-
-```
-jspm config registries.npm.timeouts.lookup 120
-```
 
 ### 5. Initialize JSPM
 ```
@@ -119,15 +117,18 @@ jspm init
 ### 6. Install Babel Locally Using JSPM
 **(If you run [CmdrX](./CmdrXReadMe.md) skip to step 9)**
 
-  * a.  jspm install npm:babel-cli
-  * b.  jspm install npm:babel-core
-  * c.  jspm isntall npm:babel-runtime
-  * d.  jspm install npm:babel-preset-react
-  * e.  jspm install npm:babel-preset-es2015
-  * f.  jspm install npm:babel-plugin-transform-es2015-modules-commonjs
-  * g.  jspm install npm:babel-plugin-transform-es2015-modules-amd
-  * h.  jspm install npm:babel-plugin-transform-react-jsx
-  * i.  jspm install npm:babel-preset-stage-0
+  * a.  jspm config registries.npm.timeouts.lookup 120
+  * b.  jspm install npm:babel-cli
+  * c.  jspm install npm:babel-core
+  * d.  jspm isntall npm:babel-runtime
+  * e.  jspm install npm:babel-preset-react
+  * f.  jspm install npm:babel-preset-es2015
+  * g.  jspm install npm:babel-plugin-transform-es2015-modules-commonjs
+  * h.  jspm install npm:babel-plugin-transform-es2015-modules-amd
+  * i.  jspm install npm:babel-plugin-transform-es2015-modules-systemjs
+  * j.  jspm install npm:babel-plugin-transform-react-jsx
+  * k.  jspm install npm:babel-preset-stage-0
+  * l.  jspm install css=github:systemjs/plugin-css
 
 ### 7. Install React and other components
 
@@ -135,7 +136,7 @@ jspm init
   * b. jspm install npm:react-dom
 
 
-### 8. Install optional packages as necessary  
+### 8. Install optional packages as necessary
   * a. jspm install jquery
   * b. jspm install npm:lodash
 
@@ -160,31 +161,45 @@ with new babel-6 versions for 'babel-cli', 'babel-core'
 and 'babel-runtime'.
 
 
-```
-"dependencies": {
-      "babel-cli": "npm:babel-cli@^6.2.0",
-      "babel-core": "npm:babel-core@^6.2.1",
-```
-```      
-    "devDependencies": {
-      "babel": "npm:babel-core@^6.2.1",
-      "babel-runtime": "npm:babel-runtime@^6.2.0",
-```
-
 #### 9-c Modify config.js
-Use Search and Replace to replace old babel-5 versions
+
+##### 9-c-1 Use Search and Replace to replace old babel-5 versions
 with new babel-6 versions for 'babel-cli', 'babel-core'
 and 'babel-runtime'.
 
 
+##### 9-c-2 Delete duplicate entry
+
 ```
-Example
-    map: {
-        "babel": "npm:babel-core@6.2.1",
-        "babel-cli": "npm:babel-cli@6.2.0",
-        "babel-core": "npm:babel-core@6.2.1",
-        "babel-runtime": "npm:babel-runtime@6.2.0",
+"npm:babel-runtime@6.2.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
 ```
+
+#### 9-d Modify ./jspm_packages/.dependencies.json
+
+#####9-d-1 Use Search and Replace to update babel-runtime, babel-core and babel-cli to the latest versions.
+
+#####9-d-2 Replace
+```
+this:
+  "npm:babel-runtime@6.2.0": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+```
+
+```
+with this:
+    "npm:babel-runtime@6.2.0": {
+      "core-js": "npm:core-js@1.2.6",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+```
+
+#### 9-e Delete babel-5 package directories from /jspm_packages
+    * 1. delete directory /jspm_packages/babel-core@5.8.34
+    * 2. delete directory /jspm_packages/babel-runtime@5.8.34
+
 
 
 ### 10. Transpile JSX to Js Using Babel
@@ -200,7 +215,7 @@ __babel will take options from '.babelrc' file__
 
 #### 10-b OR!! Set Watch On JSX Directory
 ```
-babel src --watch --out-dir build
+babel src --watch --out-dir build --source-maps true
 ```
 
 ### 11. Set Up A Server And Run The Application
@@ -213,6 +228,8 @@ __jspm install -g jspm-server__
  * To display index.html in the Browser->
 Run: __jspm-server__<ENTER>
 
+ * __The jspm-server automatically refreshes to display changes.__
+
 #### 11-b http-server
  * To display index.html in the Browser npm install -g http-server
  * (if port 8080 it taken, pick any port that is free)
@@ -220,7 +237,7 @@ Run: __jspm-server__<ENTER>
 
 #### 11-c OR - Any of a half-dozen other servers
 
-### 12. Bundling
+### 12. Bundling - Choose a Bundling Option
 #### 12-a. Create the sfx bundle and output to 'prod' directory
 * Create index2.html and link to app.js
 * [Sfx](https://github.com/systemjs/systemjs/blob/master/docs/production-workflows.md)
@@ -280,3 +297,9 @@ jspm  depcache build/main.js
 
 ### Systemjs Config
 [Systemjs Config](https://github.com/systemjs/systemjs/blob/master/docs/config-api.md)
+
+### plugin-css Systemjs
+[plugin-css](https://github.com/geelen/jspm-loader-css)
+
+### React
+[react-docs](http://facebook.github.io/react/docs/getting-started.html)
